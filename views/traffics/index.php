@@ -4,7 +4,8 @@ use app\models\Traffics;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
-use yii\grid\GridView;
+use kartik\grid\GridView;
+use kartik\grid;
 
 /** @var yii\web\View $this */
 /** @var app\models\TrafficsSearch $searchModel */
@@ -26,13 +27,17 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'pjax' => true,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
+            
             'ID',
             'price',
             'name:ntext',
-            'speed',
+            [
+                'class'=>'kartik\grid\EditableColumn',
+                'attribute'=>'speed',
+            ],
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Traffics $model, $key, $index, $column) {
