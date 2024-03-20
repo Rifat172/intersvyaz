@@ -4,9 +4,11 @@ namespace app\controllers;
 
 use app\models\Traffics;
 use app\models\TrafficsSearch;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\Json;
 
 /**
  * TrafficsController implements the CRUD actions for Traffics model.
@@ -40,6 +42,21 @@ class TrafficsController extends Controller
     {
         $searchModel = new TrafficsSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
+
+        if(Yii::$app->request->post('hasEditable')){
+            $speedId = Yii::$app->request->post('editableKey');
+            $speed = Traffics::findOne($speedId);
+
+            $out = Json::encode(['output'=>'','message'=>'']);
+            $post=[];
+            $posted = current($_POST['Traffics']);
+            $post['Traffics'] = $posted;
+            if($speed->load($post)){
+                $speed->save();
+            }
+            echo $out;
+            return;
+        }
 
         return $this->render('index', [
             'searchModel' => $searchModel,

@@ -11,7 +11,7 @@ use kartik\grid;
 /** @var app\models\TrafficsSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Traffics';
+$this->title = 'Тариф';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="traffics-index">
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Traffics', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить тариф', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -36,6 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'name:ntext',
             [
                 'class'=>'kartik\grid\EditableColumn',
+                'header'=>'speedHeader',
                 'attribute'=>'speed',
             ],
             [
