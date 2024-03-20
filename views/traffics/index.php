@@ -32,11 +32,18 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
             
             'ID',
-            'price',
-            'name:ntext',
+            [
+                'header'=>'Название',
+                'attribute'=>'price',
+            ],
+            // 'name:ntext',
+            [
+                'header'=>'Название',
+                'attribute'=>'name',
+            ],
             [
                 'class'=>'kartik\grid\EditableColumn',
-                'header'=>'speedHeader',
+                'header'=>'Скорость',
                 'attribute'=>'speed',
             ],
             [
