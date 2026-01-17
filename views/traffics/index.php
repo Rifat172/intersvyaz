@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             
             'ID',
             [
-                'header'=>'Название',
+                'header'=>'Цена',
                 'attribute'=>'price',
             ],
             // 'name:ntext',
